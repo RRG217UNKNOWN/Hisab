@@ -1,0 +1,124 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+@import "@fontsource/dm-serif-display/400.css";
+@import "@fontsource/fira-sans/400.css";
+@import "@fontsource/fira-sans/500.css";
+@import "@fontsource/fira-sans/600.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  --font-display: "DM Serif Display", ui-serif, Georgia, serif;
+  --font-sans: "Fira Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sand-50: var(--sand-50);
+  --color-sand-100: var(--sand-100);
+  --color-sand-200: var(--sand-200);
+  --color-sand-300: var(--sand-300);
+  --color-sand-500: var(--sand-500);
+  --color-sand-700: var(--sand-700);
+  --color-ink: var(--ink);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Warm sand palette */
+  --sand-50: oklch(0.985 0.006 85);   /* #faf8f5 */
+  --sand-100: oklch(0.955 0.010 85);  /* #f0ebe3 */
+  --sand-200: oklch(0.905 0.018 85);
+  --sand-300: oklch(0.820 0.028 85);  /* #c9b99a */
+  --sand-500: oklch(0.585 0.035 70);  /* #8b7355 */
+  --sand-700: oklch(0.420 0.030 65);
+  --ink: oklch(0.22 0.015 60);
+
+  --background: var(--sand-50);
+  --foreground: var(--ink);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--ink);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--ink);
+  --primary: var(--sand-500);
+  --primary-foreground: var(--sand-50);
+  --secondary: var(--sand-100);
+  --secondary-foreground: var(--sand-700);
+  --muted: var(--sand-100);
+  --muted-foreground: var(--sand-500);
+  --accent: var(--sand-200);
+  --accent-foreground: var(--sand-700);
+  --destructive: oklch(0.55 0.19 27);
+  --destructive-foreground: oklch(0.99 0.01 85);
+  --success: oklch(0.55 0.11 155);
+  --success-foreground: oklch(0.99 0.01 85);
+  --warning: oklch(0.72 0.15 65);
+  --warning-foreground: oklch(0.22 0.02 60);
+  --border: oklch(0.90 0.018 85);
+  --input: oklch(0.90 0.018 85);
+  --ring: var(--sand-500);
+
+  --shadow-warm: 0 1px 2px oklch(0.42 0.03 65 / 0.06), 0 8px 24px -12px oklch(0.42 0.03 65 / 0.15);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html, body {
+    font-family: var(--font-sans);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-feature-settings: "ss01", "cv11";
+  }
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+}
+
+@utility card-warm {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-warm);
+}
+
+@utility pulse-mic {
+  box-shadow: 0 0 0 0 oklch(0.585 0.035 70 / 0.5);
+  animation: mic-pulse 2s infinite;
+}
+
+@keyframes mic-pulse {
+  0%   { box-shadow: 0 0 0 0 oklch(0.585 0.035 70 / 0.4); }
+  70%  { box-shadow: 0 0 0 18px oklch(0.585 0.035 70 / 0); }
+  100% { box-shadow: 0 0 0 0 oklch(0.585 0.035 70 / 0); }
+}
